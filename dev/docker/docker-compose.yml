@@ -1,0 +1,7 @@
+services:
+  dash404:
+    image: php:7.4-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ../../src/:/var/www/html/
