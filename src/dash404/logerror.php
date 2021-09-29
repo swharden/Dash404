@@ -13,7 +13,7 @@ $info = array(
     "utc" => $datetime_utc->format("c"),
     "day" => $datetime_utc->format("Y-m-d"),
     "micro" => microtime(true),
-    "ref" => $_SERVER['HTTP_REFERER'],
+    "ref" => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "",
     "ip" => $_SERVER['REMOTE_ADDR'],
     "agent" => $_SERVER['HTTP_USER_AGENT'],
 );
@@ -21,4 +21,4 @@ $info = array(
 $path_file = realpath(__DIR__) . DIRECTORY_SEPARATOR . "logs" . DIRECTORY_SEPARATOR . $info["day"] . ".json";
 file_put_contents($path_file, json_encode($info) . "\n", FILE_APPEND);
 
-echo "<!-- error logged https://github.com/swharden/Dash404 -->";
+//echo "<!-- error logged https://github.com/swharden/Dash404 -->";
