@@ -4,8 +4,9 @@ function echoFileLinks()
 {
     echo "<h3 class='mt-5'>Error Files</h3>";
     echo "<ul>";
-    $path_folder = realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "logs";
-    foreach (glob($path_folder . DIRECTORY_SEPARATOR . "*.json") as $file_path) {
+    $path_folder = realpath(__DIR__) . DIRECTORY_SEPARATOR . "logs";
+    $file_paths = glob($path_folder . DIRECTORY_SEPARATOR . "*.json");
+    foreach (array_reverse($file_paths) as $file_path) {
         $filename = basename($file_path);
         $url = "?fn=$filename";
         echo "<li><a href='$url'>$filename</a></li>";
@@ -20,10 +21,10 @@ function echoFileTableIfSet()
         return;
     }
 
-    $path_folder = realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . "logs";
+    $path_folder = realpath(__DIR__) . DIRECTORY_SEPARATOR . "logs";
     $file_path = $path_folder . DIRECTORY_SEPARATOR . $filename;
     $text = file_get_contents($file_path);
-    $lines = explode("\n", $text);
+    $lines = array_reverse(explode("\n", $text));
 
     echo "<h3 class='mt-5'>{$filename}</h3>";
     echo "<table class='table table-striped table-hover border mx-auto'>";
