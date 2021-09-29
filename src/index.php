@@ -14,6 +14,10 @@
     <div class="container">
         <div class="m-5 py-3 px-4 border shadow rounded bg-white">
             <h1>Sample Website</h1>
+            <h3 class="mt-5">Live Dashboard</h3>
+            <ul>
+                <li><a href='dash404/dashboard'>Dash404 Dashboard</a></li>
+            </ul>
             <h3 class="mt-5">Bad Links</h3>
             <ul>
                 <li><a href='my/bad/url.html'>asdf</a></li>
